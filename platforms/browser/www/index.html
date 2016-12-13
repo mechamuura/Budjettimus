@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <script src="https://code.jquery.com/jquery-2.1.4.js" integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4="crossorigin="anonymous"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    
+        <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+        <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+    
+    <script type="text/javascript" src="jquery.toastmessage-min.js"></script>
+    
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">        
+    <link rel="stylesheet" href="css/themes/OmaP.css" />
+    <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="css/oma.css"/>
+    
+    <title>Oma Projekti</title>
+</head>
+<body>
+      
+            <!-- Etusivu -->
+    <div data-role="page" id="main" data-theme="c">
+
+          <div data-role="panel" id="myPanel" data-display="overlay"> 
+                                      
+                        <ul data-role="listview">
+                            <li><a href="#">Etusivu</a></li>
+                            <li><a href="#cart">Ostoslista</a></li>
+                            <li><a href="#budjetti">Budjettisi</a></li>
+                    <!--    <li><a href="#setit">Tallennetut listat</a></li> -->
+                        </ul>                        
+            <br><br>  
+        </div> 
+
+            <div data-role="header">
+                    <a href="#myPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-notext"></a>
+                <p style=padding-left:60px;color:white>Etusivu</p>
+            </div><!-- /header -->
+
+        <div role="main" class="ui-content">
+            
+            
+            <div style="background-color:navy; width:120%; margin-left:-23px">
+            <h2 class="lampo" style="margin-top:-0px;float:left;padding-right:40px; margin-left:10px">lämpötila</h2>
+                <!-- jos tuota margin top-10 ei ole tuossa niin lämpötila pomppaa iha väärälle paikalle wtf -->
+            <h2 class="kuvaus" style="margin-top:-10px;">Kuvaus</h2>
+            </div>
+            <br>
+            
+            
+            <a href="#" class="ui-btn-active ui-state-persist ui-btn ui-corner-all">Etusivu</a>
+            <a href="#cart" class="ui-btn ui-corner-all">Ostoslista</a>
+            <a href="#budjetti" class="ui-btn ui-corner-all">Budjettisi</a>
+        <!--    <a href="#setit" class="ui-btn ui-corner-all">Tallennetut listat</a> -->
+            
+            
+            
+        </div><!-- /content -->
+
+        <div data-role="footer">
+            <h4>Budjettori</h4>
+        </div><!-- /footer -->
+    </div>
+    <!-- Etusivun loppu -->
+    
+                <!-- Budjetti sivu -->
+    <div data-role="page" id="budjetti" data-theme="c">
+
+          <div data-role="panel" id="myPanel" data-display="overlay"> 
+                                      
+                        <ul data-role="listview">
+                            <li><a href="#main">Etusivu</a></li>
+                            <li><a href="#cart">Ostoslista</a></li>
+                            <li><a href="#">Budjettisi</a></li>
+                     <!--       <li><a href="#setit">Tallennetut listat</a></li> -->
+                        </ul>                        
+            <br><br>  
+        </div> 
+
+            <div data-role="header">
+                    <a href="#myPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-notext"></a>
+                <p style=padding-left:60px;color:white>Budjettisi</p>
+            </div><!-- /header -->
+
+        <div role="main" class="ui-content">
+            
+            <!-- sisältö -->
+            
+            <div style="background-color:navy; width:120%; margin-left:-23px">
+            <h2 class="lampo" style="margin-top:-0px;float:left;padding-right:40px; margin-left:10px">lämpötila</h2>
+                <!-- jos tuota margin top-10 ei ole tuossa niin lämpötila pomppaa iha väärälle paikalle wtf -->
+            <h2 class="kuvaus" style="margin-top:-10px;">Kuvaus</h2>
+            </div> 
+            
+            <h2>Budjetit</h2>
+            
+            <div class="viesti" style='display:none'>Budjetti valittu!</div>
+            
+                    <table id="budjetit" style="width:100%; max-width:400px">
+                            <thead>
+                                <tr>
+                                    <th>Valitse</th>
+                                    <th>Summa</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="budjetit">
+                                    <td>Päiväbudjetti</td>
+                                    <td><input readonly type="text" name="bpaiva" id="bpaiva"></td>
+                                    <td><input type="radio" name="radio" id="radio1"></td>
+                                </tr>
+                                <tr class="budjetit">
+                                    <td>Kuukausibudjetti</td>
+                                    <td><input readonly type="text" name="bkk" id="bkk"></td>
+                                    <td><input type="radio" name="radio" id="radio2"></td>
+                                </tr>
+                                    <tr class="budjetit">
+                                    <td>Vuosibudjetti</td>
+                                    <td><input readonly type="text" name="bvuosi" id="bvuosi"></td>
+                                    <td><input type="radio" name="radio" id="radio3"></td>
+                                </tr>
+                            </tbody>
+                    </table>
+            <input type="button" id="kayta" value="Ota valittu budjetti käyttöön">
+            
+            <br>
+            
+                <h2>Tallenna budjetti</h2>
+            	<div class="ui-field-contain">            
+                <label for="paiva">Päivä</label>
+                    <input type="text" name="paiva" id="paiva" placeholder="Aseta päivittäinen budjetti">
+                <br>
+                <label for="kk">Kuukausi</label>
+                    <input type="text" name="kk" id="kk" placeholder="Aseta kuukausittainen budjetti">
+                <br>
+                <label for="vuosi">Vuosi</label>
+                    <input type="text" name="vuosi" id="vuosi" placeholder="Aseta vuosibudjetti">                
+                </div>
+            
+            <input type="button" id="tallenna" value="Tallenna budjetti">
+            
+            
+        </div><!-- /content -->
+
+        <div data-role="footer">
+            <h4>Budjettori</h4>
+        </div><!-- /footer -->
+    </div>
+    <!-- budjetti sivun loppu -->
+    
+                    <!-- ostoslista sivu -->
+    <div data-role="page" id="cart" data-theme="c">
+
+          <div data-role="panel" id="myPanel" data-display="overlay"> 
+                                      
+                        <ul data-role="listview">
+                            <li><a href="#main">Etusivu</a></li>
+                            <li><a href="#">Ostoslista</a></li>
+                            <li><a href="#budjetti">Budjettisi</a></li>
+               <!--             <li><a href="#setit">Tallennetut listat</a></li> -->
+                        </ul>                        
+            <br><br>  
+        </div> 
+
+            <div data-role="header">
+                    <a href="#myPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-notext"></a>
+                <p style=padding-left:60px;color:white>Ostoslista</p>
+            </div><!-- /header -->
+
+        <div role="main" class="ui-content">
+            
+            <div style="background-color:navy; width:120%; margin-left:-23px">
+            <h2 class="lampo" style="margin-top:-0px;float:left;padding-right:40px; margin-left:10px">lämpötila</h2>
+                <!-- jos tuota margin top-10 ei ole tuossa niin lämpötila pomppaa iha väärälle paikalle wtf -->
+            <h2 class="kuvaus" style="margin-top:-10px;">Kuvaus</h2>
+            </div>
+            
+<!--         <div data-role="main" class="ui-content ui-field-contain">
+               <form method="post" action="demoform.asp">
+                  <fieldset class="ui-field-contain">
+                    <select name="setti" id="setti">
+                      <option value="alepa">Alepa</option>
+                      <option value="smarket">S-market</option>
+                      <option value="prisma">Prisma</option>
+                      <option value="kmarket">K-market</option>
+                      <option value="sittari">Citymarket</option>
+                      <option value="muu">Muu</option>
+                    </select>
+                  </fieldset>
+                  <input type="submit" data-inline="true" value="Submit">
+                </form>
+              </div>    -->
+            <br>
+            <h2>Lisää uusi tuote ostoslistaan</h2>
+            <div class="ui-field-contain">            
+                <label for="nimi" size="5">Nimi</label>
+                    <input type="text" name="nimi" id="nimi" placeholder="Tuotteen nimi">
+                <br>
+                <label for="hinta">Hinta</label>
+                    <input type="text" name="hinta" id="hinta" placeholder="Tuotteen hinta">
+                <br>
+                <label for="maara">Määrä</label>
+                    <input type="text" name="maara" id="maara" placeholder="Tuotteiden lukumäärä">
+            </div>            
+            <input type="button" class="add-row" value="Lisää">
+            
+            <div id="tuotelista" class="ui-field-contain">
+                <h2>Ostoskori:</h2>
+
+                        <table id="items" style="width:100%; max-width:400px">
+                            <thead>
+                                <tr>
+                                    <th>Valitse</th>
+                                    <th>Nimi</th>
+                                    <th>Hinta</th>
+                                    <th>Määrä</th>
+                                    <th style="color:#FF700D">Yhteensä</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dynaaminen">
+                                <tr class="targetfields">
+                                    <!-- lista johon tulee dynaamisesti rivejä -->
+                                </tr>
+                            </tbody>
+                        </table>
+                <div id="valinnat">
+                        <button type="button" class="ostettu">Ostokset ostettu!</button>
+                        <button type="button" class="delete-row">Poista rivi</button>
+                </div>
+                        <p style="float:left">Yhteensä: <span id="total">0</span> €</p>
+                        <p align="right" style="padding-top:16px">
+                            <span id="wat">Valittu budjetti </span><span id="bud">0</span> €</p>
+                
+            </div>         
+        </div><!-- /content -->
+
+        <div data-role="footer">
+            
+        </div>
+        
+        <div data-role="footer">
+            <h4>Budjettori</h4>
+        </div><!-- /footer -->
+    </div>
+    <!-- ostoslista sivun loppu -->
+
+  
+    
+    
+                        <!-- setti sivu -->
+<!--    <div data-role="page" id="setit" data-theme="c">
+
+          <div data-role="panel" id="myPanel" data-display="overlay"> 
+                                      
+                        <ul data-role="listview">
+                            <li><a href="#main">Etusivu</a></li>
+                            <li><a href="#budjetti">Budjettisi</a></li>
+                            <li><a href="#cart">Ostoslista</a></li>
+                            <li><a href="#">Tallennetut listat</a></li>
+                        </ul>                        
+            <br><br>  
+        </div> 
+
+            <div data-role="header">
+                    <a href="#myPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-notext"></a>
+                <p style=padding-left:60px;color:white>Tallennetut listat</p>
+            </div><!-- /header -->
+
+ <!--       <div role="main" class="ui-content">
+            <br>
+            
+            <br>
+
+            <!-- sisältö -->
+            
+            
+<!--        </div><!-- /content -->
+
+ <!--       <div data-role="footer">
+            <h4>Budjettori</h4>
+        </div><!-- /footer -->
+<!--    </div>
+    <!-- setti sivun loppu -->
+
+    
+    
+    
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        //app.initialize();
+        
+    </script>
+
+    <script>
+        
+    var storage = window.localStorage;    
+        
+  $(document).on("pagecreate",function(){    
+  // $("#btn1").click(function(){
+        console.log("fetchapod tapahtuu");
+        fetchApod()
+    }); 
+        // sää API, sivun ylälaitaan
+        function fetchApod(){
+            $.ajax({
+                url: "http://api.openweathermap.org/data/2.5/weather?lang=fi&q=helsinki&units=metric&APPID=32f1264bba3945837fa37cc1c29b4db1",
+                dataType: "json"
+            }).done(function(data){
+                    console.log("RES: " + data.main.temp);
+                    $(".lampo").text(data.main.temp+" °C");
+                    $(".kuvaus").text(""+data.weather[0].description);
+                    //$("#tuuli").text("Tuulen nopeus: "+data.wind.speed+" m/s");
+            });
+    };
+     
+        
+    // ladataan ostoslista sivulle muistista budjettia    
+    $(document).on("pagecreate","#cart",function(){
+        $("#valinnat").hide();
+        $("#items").hide();
+        
+        console.log(storage.getItem("watis"));
+        console.log(storage.getItem("budis"));
+        $("#wat").html(storage.getItem("watis"));
+        $("#bud").html(storage.getItem("budis"));
+        
+    });    
+    // ladataan budjetti sivulle muistista itemeitä    
+    $(document).on("pagecreate","#budjetti",function(){
+        
+            $("#bpaiva").val(storage.getItem("p"));
+            $("#bkk").val(storage.getItem("k"));
+            $("#bvuosi").val(storage.getItem("v"));                 
+    });   
+        
+    // document ready tulee kaikkee kivaa
+     $(document).ready(function(){ 
+         
+        $("#tallenna").click(function(){
+            var paiva = parseInt($("#paiva").val());
+            var kk = parseInt($("#kk").val());
+            var vuosi = parseInt($("#vuosi").val());
+            console.log("päivä: "+paiva);
+            console.log("kk: "+kk);
+            console.log("vuosi: "+vuosi);
+            
+            storage.setItem("p", paiva);
+            storage.setItem("k", kk);
+            storage.setItem("v", vuosi);
+            
+            $("#bpaiva").val(paiva);
+            $("#bkk").val(kk);
+            $("#bvuosi").val(vuosi);
+
+        });
+        
+         //valitaan käytettävissä oleva budjetti. Tiedot siirtyy budjetti sivulta ostoslista sivulle
+        $("#kayta").click(function(){
+            if($("#radio1").is(':checked'))
+                {
+                    var paiva = parseInt($("#bpaiva").val());
+                    
+                    storage.setItem("watis", "Päiväbudjetti: ");
+                    storage.setItem("budis", paiva);
+                    console.log("päiväbudjetti radio valittu ja lisätty muistiin: '"+storage.getItem("watis")+"' ja "+storage.getItem("budis"));
+                    
+                    $("#wat").html(storage.getItem("watis"));
+                    $("#bud").html(storage.getItem("budis"));
+                    
+                    $('.viesti').fadeIn(400).delay(3000).fadeOut(400); //viesti esiin hetkeksi
+                }
+            else if($("#radio2").is(':checked'))
+                {
+                    var kk = parseInt($("#bkk").val());
+                    
+                    storage.setItem("watis", "Kuukausibudjetti: ");
+                    storage.setItem("budis", kk);
+                    console.log("kuukausibudjetti radio valittu ja lisätty muistiin: '"+storage.getItem("watis")+"' ja "+storage.getItem("budis"));
+                    
+                    $('.viesti').fadeIn(400).delay(3000).fadeOut(400); //viesti esiin hetkeksi
+                }
+            else
+                {
+                    var vuosi = parseInt($("#bvuosi").val());
+                    
+                    storage.setItem("watis", "Vuosibudjetti: ");
+                    storage.setItem("budis", vuosi);
+                    console.log("vuosibudjetti radio valittu ja lisätty muistiin: '"+storage.getItem("watis")+"' ja "+storage.getItem("budis"));
+                    
+                    $('.viesti').fadeIn(400).delay(3000).fadeOut(400); //viesti esiin hetkeksi
+                }                
+        });
+         
+        // tavaroiden lisääminen tauluun ostoslista sivulla 
+         var total = 0;
+        $(".add-row").click(function(){
+            $("#valinnat").fadeIn("slow");
+            $("#items").fadeIn("slow");
+            
+            var name = $("#nimi").val();
+            var qty = parseInt($("#maara").val());
+            var rate = parseInt($("#hinta").val());
+            var subtotal = qty * rate;
+            var markup = "<tr><td style='text-align:center'><input type='checkbox' name='record'></td><td style='padding:10px;border:solid'>" + name + "</td><td style='padding:10px;border:solid'>" + rate + "€</td><td style='padding:10px;border:solid'>"+ qty + "</td><td class='totaali' style='color:#FF700D;border:solid;text-align:center'>"+ subtotal +"</td></tr>";
+            $("#dynaaminen").append(markup); // kaikki nämä välimuistiin
+            if(!isNaN(subtotal))
+                total+=subtotal;
+            $("#total").html(total);
+            
+            $("#nimi").val('');
+            $("#maara").val('');
+            $("#hinta").val('');
+            
+        });
+
+        // tuotteiden poistaminen taulusta 
+        $(".delete-row").click(function(){
+            var subtotal = 0;
+            $("table tbody").find('input[name="record"]').each(function(){
+            	if($(this).is(":checked")){
+                    
+                    var s = $(".totaali").html(); // TÄSSÄ TÄMÄ TOTAALI OTTAA VÄÄRÄSTÄ KOHTAA ARVON <<<<<<<<<<<<<<<<<<<<<<<<
+                    console.log("subtotaali pls find it: "+s);
+                    if(!isNaN(subtotal))
+                        total=total-s;
+                    else
+                        total=total-s; 
+                    $("#total").html(total);                        
+                    
+                    $(this).parents("tr").remove(); 
+                    
+                     if(total < 1)
+                         $("#valinnat").fadeOut("slow");
+                }
+                
+            });                        
+        });
+    });  
+    
+    </script> 
+
+</body>
+
+</html>
